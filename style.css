@@ -1,0 +1,146 @@
+/* RESET */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+/* BODY */
+body {
+    /* Background image with a semi-transparent gradient overlay for contrast */
+    background-image: linear-gradient(135deg, rgba(102, 126, 234, 0.55), rgba(118, 75, 162, 0.55)), url('Image/Bg.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #fff;
+}
+
+/* HEADER */
+.game-header {
+    width: 100%;
+    padding: 20px;
+    /* layout header: title on one side, game info inline on the other */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+}
+
+/* Game info (time / moves / score) laid out in a single row */
+.game-info {
+    display: flex;
+    gap: 18px;
+    align-items: center;
+}
+
+.game-info p {
+    margin: 0;
+    /* prevent paragraphs from stacking due to default margins */
+    font-size: 1rem;
+}
+
+
+#restartBtn {
+    padding: 10px 18px;
+    border: none;
+    border-radius: 6px;
+    background: #ffcc00;
+    color: #333;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+#restartBtn:hover {
+    background: #ffd633;
+}
+
+
+/* GAME BOARD */
+.game-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+    width: 90%;
+    max-width: 400px;
+    margin: 20px auto;
+}
+
+/* CARD */
+.card {
+    position: relative;
+    width: 100%;
+    padding-top: 100%;
+    perspective: 800px;
+    cursor: pointer;
+}
+
+.card-inner {
+    position: absolute;
+    inset: 0;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+}
+
+.card.flip .card-inner {
+    transform: rotateY(180deg);
+}
+
+/* CARD FACES */
+.card-front,
+.card-back {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    backface-visibility: hidden;
+    font-size: 2rem;
+}
+
+.card-front {
+    background: #fff;
+    color: #333;
+}
+
+.card-back {
+    background: #ffcc00;
+    transform: rotateY(180deg);
+}
+
+/* MATCHED CARD */
+.card.matched {
+    pointer-events: none;
+    opacity: 0.7;
+}
+
+/* RESPONSIVE */
+@media (max-width: 480px) {
+    .game-container {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+.bottom-controls {
+    margin: 20px 0 30px;
+}
+
+.bottom-controls button {
+    padding: 12px 22px;
+    font-size: 16px;
+    border: none;
+    border-radius: 8px;
+    background: #ffcc00;
+    color: #333;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.bottom-controls button:hover {
+    background: #ffd633;
+}
